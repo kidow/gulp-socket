@@ -10,6 +10,8 @@ app.set('views', join(__dirname, 'views'))
 app.use(express.static(join(__dirname, 'static')))
 app.get('/', (req, res) => res.render('home'))
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('App listening on port 4000!')
 })
+
+const io = socketIO(server)
