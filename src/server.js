@@ -19,5 +19,15 @@ const server = app.listen(PORT, () => {
 const io = socketIO.listen(server)
 
 io.on('connection', socket => {
-  socket.on('helloGuys', _ => console.log('the client says hello'))
+  socket.on('newMessage', ctx => {
+    console.log('ctx: ', ctx)
+    socket.broadcast.emit('messageNotif', {
+      message: ctx.message,
+      nickname: socket.nickname || 'Anon'
+    })
+  })
+  socket.on('setNickname', ctx => {
+    console.log('ctx2: ', ctx)
+    socket.nickname = ctx.nickname
+  })
 })
