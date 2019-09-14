@@ -1,2 +1,4 @@
-# guess-mine
-Realtime Drawing Game built with SocketIO, Gulp and Node
+```
+npm run dev:assets
+npm run dev:server
+```
